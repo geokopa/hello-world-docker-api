@@ -35,7 +35,7 @@
       - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
       - "traefik.http.routers.dashboard.middlewares=auth"
       # Basic Auth Middleware (username: admin, password: changeme)
-      - "traefik.http.middlewares.auth.basicauth.users=admin:$apr1$21fznNfK$aUdAWZPwKFtk5wT38ObWU0"
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$21fznNfK$aUdAWZPwKFtk5wT38ObWU0"
   
   helloworld-docker-api:
     image: ghcr.io/geokopa/hello-world-docker-api:prod
@@ -56,7 +56,7 @@
       - POSTGRES_SSLMODE=disable
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 2
     restart: always
     depends_on:
       db:
