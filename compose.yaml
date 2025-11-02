@@ -27,8 +27,8 @@
       - letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
   
-  helloworlddockerapi:
-    image: ghcr.io/geokopa/hello-world-docker-api:sha256-0773bac342fe7bc40faf6fb47148b91924c3eede5ff470224fd5326156f5fdb6
+  helloworld-docker-api:
+    image: ghcr.io/geokopa/hello-world-docker-api:prod
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.guestbook.rule=Host(`zenful.cloud`)"
