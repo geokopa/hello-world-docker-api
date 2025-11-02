@@ -35,7 +35,7 @@
       - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
       - "traefik.http.routers.dashboard.middlewares=auth"
       # Basic Auth Middleware (username: admin, password: 3Y14O7jN7waJ)
-      - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$hVqW8kJu$$zYLdKC6nX5YfJYvPmXqDZ/"
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$TXhRTP5B$$XqdUxYLKIlL7dxKZcLfPx0"
   
   helloworld-docker-api:
     image: ghcr.io/geokopa/hello-world-docker-api:prod
