@@ -1,0 +1,7 @@
+﻿services:
+  helloworlddockerapi:
+    image: helloworlddockerapi
+    build:
+      context: .
+      dockerfile: HelloWorldDockerApi/Dockerfile
+

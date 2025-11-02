@@ -1,0 +1,6 @@
+@HelloWorldDockerApi_HostAddress = http://localhost:5186
+
+GET {{HelloWorldDockerApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
