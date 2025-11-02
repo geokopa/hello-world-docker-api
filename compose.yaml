@@ -31,7 +31,7 @@
     image: ghcr.io/geokopa/hello-world-docker-api:prod
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.guestbook.rule=Host(`prodpulse.app`)"
+      - "traefik.http.routers.guestbook.rule=Host(`api.prodpulse.app`)"
       - "traefik.http.routers.guestbook.entrypoints=websecure"
       - "traefik.http.routers.guestbook.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
