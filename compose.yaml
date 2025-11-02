@@ -54,7 +54,6 @@
   db:
     image: postgres
     restart: always
-    user: postgres
     secrets:
       - db-password
     volumes:
