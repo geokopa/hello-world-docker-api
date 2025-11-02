@@ -3,9 +3,8 @@
     image: containrrr/watchtower
     command:
       - "--label-enable"
-      - "--interval"
-      - "30"
-      - "--rolling-restart"
+      - "--cleanup"
+      - "--schedule=0 0 2 * * *"  # Run at 2 AM daily (cron format: sec min hour day month weekday)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   reverse-proxy:
@@ -20,12 +19,23 @@
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+      - "--api.dashboard=true"
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.enable=true"
+      # Dashboard
+      - "traefik.http.routers.dashboard.rule=Host(`traefik.prodpulse.app`)"
+      - "traefik.http.routers.dashboard.service=api@internal"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
+      - "traefik.http.routers.dashboard.middlewares=auth"
+      # Basic Auth Middleware (username: admin, password: changeme)
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/"
   
   helloworld-docker-api:
     image: ghcr.io/geokopa/hello-world-docker-api:prod
